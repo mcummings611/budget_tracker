@@ -8,8 +8,8 @@ if not os.path.exists(fileName) or os.path.getsize(fileName) == 0:
     with open(fileName, 'w') as f:
         json.dump([], f)
 
-print("Simple Budget Tracker")
-print("Enter 0 at any time to exit.\n")
+print("\n\033[4mSimple Budget Tracker\033[0m")
+print("\nEnter 0 at any time to exit.\n")
 
 def addTransaction():
     currentDate = datetime.datetime.today()

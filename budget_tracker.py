@@ -39,8 +39,9 @@ def addTransaction():
 
     #Transaction confirmation
     userConf = input(f"You want to add \033[4m{prefix}{userAmount}\033[0m to your account?. Type YES to confirm: ").upper()
-    if userConf != "YES":
+    if userConf != "YES" and userConf != "Y":
         return None
+    
     
     #File writing
     entry = {
@@ -62,6 +63,8 @@ def addTransaction():
             data.append(entry)
             file.seek(0)
             json.dump(data, file, indent=2)
+
+    print(f"\nAdded \033[4m{prefix}{userAmount}\033[0m to your account.\n")
             
             
 def viewBalance():
@@ -92,7 +95,7 @@ def viewHistory():
 
 def deleteTransactions():
     confirm = input("You are about to \033[4mDELETE ALL TRANSACTIONS!\033[0m Type \033[4mYES\033[0m to continue: ").upper()
-    if confirm == "YES":
+    if confirm == "YES" or confirm == 'Y':
         with open(fileName, 'w') as file:
                 json.dump([], file)
         print("\nAll transactions have been deleted.")
